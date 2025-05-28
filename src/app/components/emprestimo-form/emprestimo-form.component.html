@@ -1,0 +1,33 @@
+<div class="card">
+  <h2>Novo Empréstimo</h2>
+  <form (ngSubmit)="salvar()">
+    <div class="p-fluid">
+      <div class="field">
+        <label for="livro">Livro</label>
+        <p-dropdown
+          [options]="livros"
+          optionLabel="titulo"
+          [(ngModel)]="emprestimo.livro"
+          name="livro"
+          placeholder="Selecione um livro"
+          required>
+        </p-dropdown>
+      </div>
+
+      <div class="field">
+        <label for="usuario">Usuário</label>
+        <p-dropdown
+          [options]="usuarios"
+          optionLabel="nome"
+          [(ngModel)]="emprestimo.usuario"
+          name="usuario"
+          placeholder="Selecione um usuário"
+          required>
+        </p-dropdown>
+      </div>
+
+      <button pButton label="Salvar" icon="pi pi-save" type="submit"></button>
+      <button pButton label="Cancelar" icon="pi pi-times" type="button" severity="secondary" (click)="cancelar()"></button>
+    </div>
+  </form>
+</div>
