@@ -1,0 +1,33 @@
+<div class="card">
+  <h2>Empréstimos Ativos</h2>
+  <p-table [value]="emprestimos" [loading]="loading" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Livro</th>
+        <th>Usuário</th>
+        <th>Data Empréstimo</th>
+        <th>Data Devolução Prevista</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-e>
+      <tr>
+        <td>{{ e.livro.titulo }}</td>
+        <td>{{ e.usuario.nome }}</td>
+        <td>{{ e.dataEmprestimo }}</td>
+        <td>{{ e.dataDevolucaoPrevista }}</td>
+        <td>{{ e.status }}</td>
+        <td>
+          <button
+            *ngIf="e.status === 'ATIVO'"
+            pButton
+            label="Devolver"
+            icon="pi pi-undo"
+            (click)="devolver(e.id!)">
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

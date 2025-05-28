@@ -1,0 +1,25 @@
+<div class="card">
+  <h2>Lista de Livros</h2>
+  <button pButton label="Novo Livro" icon="pi pi-plus" (click)="novoLivro()"></button>
+  <p-table [value]="livros" [loading]="loading" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Disponível</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-livro>
+      <tr>
+        <td>{{ livro.titulo }}</td>
+        <td>{{ livro.autor }}</td>
+        <td>{{ livro.disponivel ? 'Sim' : 'Não' }}</td>
+        <td>
+          <button pButton icon="pi pi-pencil" (click)="editarLivro(livro.id!)"></button>
+          <button pButton icon="pi pi-trash" severity="danger" (click)="excluirLivro(livro.id!)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
